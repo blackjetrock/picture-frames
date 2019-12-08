@@ -42,5 +42,33 @@ bevel_cube(fr_h/2, fr_d, fr_th);
 
 
 
+c=4;
 
+if( c==1)
+{
 corner1();
+}
+
+if(c==2)
+{
+    
+translate([0, -fr_h*1.1, 0])
+mirror([0,1,0])
+corner1();
+}
+
+translate([-fr_w, 0,0])
+mirror([1,0,0])
+{
+if(c==3)
+{
+corner1();
+}
+
+if(c==4)
+{
+translate([0, -fr_h*1.1, 0])
+mirror([0,1,0])
+corner1();
+}
+}
