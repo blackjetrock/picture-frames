@@ -4,7 +4,7 @@
 
 fr_w = 4*25.4+7;
 fr_h = 6*25.4+7;
-fr_th = 4;
+fr_th = 8;
 fr_d = 10;
 
 module bevel_cube_1(x,y,z)
