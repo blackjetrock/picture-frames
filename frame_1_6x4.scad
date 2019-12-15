@@ -40,9 +40,44 @@ bevel_cube(fr_w/2, fr_d, fr_th);
 bevel_cube(fr_h/2, fr_d, fr_th);
 }
 
+///
+module stand_pre()
+{
+    cube([100, 15, 2], center=true);
+    translate([100/2, 0, 0])
+    rotate([0,0,45])
+    cube([0.707*15, 0.707*15, 2], center=true);
+}
+
+module stand_rem()
+{
+    translate([-100/2+25,0,1.5])
+    rotate([0,45,0])
+    cube([3, 20, 3],center=true);
+    
+    translate([-100/2+10,-4,0])
+    cylinder(d=1.4, h=10, $fn=100, center=true);
+
+    translate([-100/2+10,4,0])
+    cylinder(d=1.4, h=10, $fn=100, center=true);
+
+    translate([-100/2+10-4,0 ,0])
+    cylinder(d=1.4, h=10, $fn=100, center=true);
+
+}
+
+module stand()
+{
+difference()
+    {
+        stand_pre();
+        stand_rem();
+    }
+}
 
 
-c=1;
+c=5;
+
 
 if( c==1)
 {
@@ -71,4 +106,9 @@ translate([0, -fr_h*1.1, 0])
 mirror([0,1,0])
 corner1();
 }
+}
+
+if( c==5)
+{
+stand();
 }
