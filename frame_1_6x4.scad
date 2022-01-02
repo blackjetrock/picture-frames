@@ -43,38 +43,73 @@ bevel_cube(fr_h/2, fr_d, fr_th);
 ///
 module stand_pre()
 {
-    cube([100, 15, 2], center=true);
+    cube([100, 15, 5], center=true);
     translate([100/2, 0, 0])
     rotate([0,0,45])
-    cube([0.707*15, 0.707*15, 2], center=true);
+    cube([0.707*15, 0.707*15, 5], center=true);
+    
+    translate([-100/2+25+5/2,0,0])
+    rotate([90,0,0])
+    cylinder(d=5, $fn=100,center=true,h=15);
 }
 
 module stand_rem()
 {
-    translate([-100/2+25,0,1.5])
-    rotate([0,45,0])
-    cube([3, 20, 3],center=true);
+    translate([-100/2+25,0,0])
+    rotate([0, 0 ,0])
+    cube([4, 20, 8],center=true);
     
     translate([-100/2+10,-4,0])
-    cylinder(d=1.4, h=10, $fn=100, center=true);
+    cylinder(d=1.8, h=10, $fn=100, center=true);
 
     translate([-100/2+10,4,0])
-    cylinder(d=1.4, h=10, $fn=100, center=true);
+    cylinder(d=1.8, h=10, $fn=100, center=true);
 
     translate([-100/2+10-4,0 ,0])
-    cylinder(d=1.4, h=10, $fn=100, center=true);
+    cylinder(d=1.8, h=10, $fn=100, center=true);
 
+    translate([-100/2+25+5/2,0,0])
+    rotate([90,0,0])
+    cylinder(d=5, $fn=100,center=true,h=15);
+
+
+   translate([-100/2+25-5.5/2,-7.6,0])
+   cube([5.5, 5, 5.5],center=true);
+   translate([-100/2+25-5.5/2, 7.6,0])
+   cube([5.5, 5, 5.5],center=true);
 }
 
-module stand()
+
+module stand_a()
 {
 difference()
     {
         stand_pre();
         stand_rem();
     }
+    
+    
+ difference()
+    {
+    translate([-100/2+25+5/2,0,0])
+    rotate([90,0,0])
+    cylinder(d=5, $fn=100,center=true,h=15);
+
+    translate([-100/2+25+5/2,0,0])
+    rotate([90,0,0])
+    cylinder(d=1.8, $fn=100,center=true,h=16);
+    }
 }
 
+module stand()
+{
+    difference()
+    {
+        stand_a();
+    translate([-100/2+25+5.5/2,0,0])
+    cube([5.5, 15.5-5, 5.5],center=true);
+    }
+}
 
 c=5;
 
